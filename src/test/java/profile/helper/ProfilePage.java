@@ -1,6 +1,6 @@
-package profile;
+package profile.helper;
 
-import helper.MethodsHelper;
+import profile.helper.MethodsHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,49 +13,41 @@ public class ProfilePage {
     private WebDriver driver;
 
     // Локаторы для перехода в профиль
-    private By avatar = By.xpath("//div[@class=\"header3__nav-item js-header3-popup-trigger" +
-            "  header3__nav-item-user-info\"]");
+    private By avatar = By.xpath("//span[@class='header3__user-info-name']");
     private By name = By.xpath("//div[@class=\"header3__user-info-popup-links\"]//a[1]");
 
     private By firstName = By.xpath("//input[@name='fname_latin']");
     private By lastName = By.xpath("//input[@name='lname_latin']");
     private By blogName = By.id("id_blog_name");
     ///Локаторы для класса calendar
-    private By date_of_birth = By.xpath("// input[@name='date_of_birth']");
+    private By date_of_birth = By.xpath("//input[@name='date_of_birth']");
     private By day = By.xpath("//ul[@data-view='days']//li[text()='25']");
-    private By yearCurrent = By.xpath("// div[@class='datepicker-panel'] //li[2]");
-    private By yearPrev = By.xpath("// div[@class='datepicker-panel'] //li[1]");
+    private By yearCurrent = By.xpath("//div[@class='datepicker-panel']//li[2]");
+    private By yearPrev = By.xpath("//div[@class='datepicker-panel']//li[1]");
     private By year = By.xpath("//div[@class='datepicker-panel']//ul[@data-view='years']//li[10]");
-    private By mounth = By.xpath("// div [@ class='datepicker-panel'] // ul[@data-view='months']//li[text()='Ноя']");
+    private By mounth = By.xpath("//div[@class='datepicker-panel']//ul[@data-view='months']//li[text()='Ноя']");
 
     /// Локаторы для выбора страны
     private By сountryInputField = By.xpath( "//div[@data-slave-selector='.js-lk-cv-dependent-slave-city']");
-    private By countrySelection = By.xpath("// button[@title='Россия'] ");
+    private By countrySelection = By.xpath("//button[@title='Россия'] ");
     /// Локаторы для выбора города
-    private By cityInputField = By.xpath("// div[@class='select lk-cv-block__input lk-cv-block__input_full " +
-            "js-lk-cv-dependent-slave-city js-lk-cv-custom-select']");
-    private By citySelection = By.xpath("// button[@data-value='176']");
+    private By cityInputField = By.cssSelector("[class*='js-lk-cv-dependent-slave-city']");
+    private By citySelection = By.xpath("//button[@data-value='176']");
     /// Локаторы для выбора уровня языка
-    private By languageInputField = By.xpath("// div [@class='select lk-cv-block__input " +
-            "lk-cv-block__input_full js-lk-cv-custom-select'] ");
-    private By languageSelection = By.xpath("// button [@title='Начальный уровень (Beginner)']" );
+    private By languageInputField = By.xpath("//input[@data-title='Уровень знания английского языка']/../..");
+    private By languageSelection = By.xpath("//button [@title='Начальный уровень (Beginner)']" );
     /// Локатор для готовности к переезду
-    private By radioButton = By.xpath(" //label [@class='radio radio_light4 radio_size-sm " +
-            "radio_vertical-center lk-cv-block__radio'] // span[text()='Да']");
+    private By radioButton = By.xpath("//input[@id='id_ready_to_relocate_1']/..");
     /// Локатор для выбора формата работы
-    private By checbox = By.xpath("//div[@class='container__col container__col_9 container__col_ssm-12']" +
-            "/descendant::div[33]");
+    private By checbox = By.xpath("//input[@title='Гибкий график']/../..");
     /// Локатор для выбора способов связи
     private By buttonAdd = By.xpath("//button[text()='Добавить']");
     private By сommunicationMethodOne = By.xpath("//span[text()='Способ связи']");
-    private By сommunicationListOne = By.xpath("//div[@class='lk-cv-block__select-scroll lk-cv-block__select-scroll_service" +
-            " js-custom-select-options']/child::button[7]");
+    private By сommunicationListOne = By.cssSelector("[class*='lk-cv-block__select-options_left']>div>button[title='Тelegram']");
     private By tg = By.xpath("//input[@name='contact-0-service']");
 
-    private By сommunicationMethodTwo = By.xpath("//div[@class='lk-cv-block__line js-formset-items']" +
-            "/child::div[2]/child::div/child::div/child::div/div");
-    private By communicationListTwo = By.xpath("//div[@class='lk-cv-block__select-options lk-cv-block__select-options_left " +
-            "js-custom-select-options-container']/child::div/child::button[3]");
+    private By сommunicationMethodTwo = By.cssSelector("[data-num='1'] [data-selected-option-class]");
+    private By communicationListTwo = By.cssSelector("label ~*:not(.hide) button[title='VK']");
     private By vk = By.xpath("//input[@name='contact-1-service']");
 
     private By fieldContactsOne = By.id("id_contact-0-value");

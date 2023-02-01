@@ -1,17 +1,25 @@
 package auth;
 
-import helper.BaseUITest;
-import helper.MethodsHelper;
+
+import profile.helper.MethodsHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import utils.Iutils;
+import utils.PropertiesReder;
 
-public class Auth extends BaseUITest {
-    private LoginPassword loginPassword = new LoginPassword();
+import java.util.Map;
+
+
+public class Auth{
 
     public Auth(WebDriver driver){this.driver = driver;}
-
     private By clickButton = By.xpath("//button[@class ='header3__button-sign-in']");
+
+    Iutils propRider = new PropertiesReder();
+    Map<String,String> props = propRider.read();
+    String login = props.get("login");
+    String password = props.get("password");
 
 
 
@@ -21,8 +29,8 @@ public class Auth extends BaseUITest {
         WebElement authForm = driver.findElement(By.xpath("//form[@action = '/login/']"));
         WebElement emailField = authForm.findElement(By.xpath(".//input[@name = 'email']"));
         WebElement passwordField = authForm.findElement(By.xpath(".//input[@name = 'password']"));
-        emailField.sendKeys(loginPassword.getLogin());
-        passwordField.sendKeys(loginPassword.getPassword());
+        emailField.sendKeys(login);
+        passwordField.sendKeys(password);
         WebElement entrance = authForm.findElement(By.xpath(".//button[@type ='submit']"));
         entrance.click();
     }
