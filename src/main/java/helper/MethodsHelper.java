@@ -1,4 +1,4 @@
-package profile.helper;
+package helper;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;

@@ -1,6 +1,5 @@
-package profile.helper;
-
-import profile.helper.MethodsHelper;
+package pagers;
+import helper.MethodsHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,9 +21,9 @@ public class ProfilePage {
     ///Локаторы для класса calendar
     private By date_of_birth = By.xpath("//input[@name='date_of_birth']");
     private By day = By.xpath("//ul[@data-view='days']//li[text()='25']");
-    private By yearCurrent = By.xpath("//div[@class='datepicker-panel']//li[2]");
-    private By yearPrev = By.xpath("//div[@class='datepicker-panel']//li[1]");
-    private By year = By.xpath("//div[@class='datepicker-panel']//ul[@data-view='years']//li[10]");
+    private By yearCurrent = By.cssSelector("li[data-view='month current']");
+    private By yearPrev = By.cssSelector("li[data-view='years prev']");
+    private By year = By.xpath("//div[@class='datepicker-panel']//ul[@data-view='years']//li[text()='1997']");
     private By mounth = By.xpath("//div[@class='datepicker-panel']//ul[@data-view='months']//li[text()='Ноя']");
 
     /// Локаторы для выбора страны
@@ -157,10 +156,10 @@ public class ProfilePage {
           WebElement dobleClckTwo = driver.findElement(yearPrev);
           new Actions(driver).doubleClick(dobleClckTwo).perform();
           dobleClckTwo = driver.findElement(yearPrev);
-        new Actions(driver).click(dobleClckTwo).perform();
-        driver.findElement(year).click();
+         new Actions(driver).click(dobleClckTwo).perform();
+         driver.findElement(year).click();
       // Выбрали месяц рождения
-      driver.findElement(mounth).click();
+        driver.findElement(mounth).click();
 
 
     }

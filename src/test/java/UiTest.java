@@ -1,6 +1,6 @@
-import auth.Auth;
-import profile.helper.Logger;
-import profile.helper.MethodsHelper;
+import org.junit.BeforeClass;
+import pagers.Auth;
+import helper.Logger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.junit.After;
@@ -8,7 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import profile.helper.ProfilePage;
+import helper.MethodsHelper;
+import pagers.ProfilePage;
 
 
 public class UiTest {
@@ -18,9 +19,15 @@ public class UiTest {
     protected WebDriver driver;
     final private String OTUSURL = "https://otus.ru";
 
+
+    @BeforeClass
+    public static void driverSetup(){
+        WebDriverManager.chromedriver().setup();
+
+    }
+
     @Before
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }

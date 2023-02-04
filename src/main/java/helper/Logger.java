@@ -1,4 +1,4 @@
-package profile.helper;
+package helper;
 
 import org.apache.logging.log4j.LogManager;
 

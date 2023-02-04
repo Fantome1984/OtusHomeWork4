@@ -1,10 +1,11 @@
-package auth;
+package pagers;
 
 
-import profile.helper.MethodsHelper;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import helper.MethodsHelper;
 import utils.Iutils;
 import utils.PropertiesReder;
 
