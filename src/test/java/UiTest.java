@@ -1,4 +1,5 @@
 import org.junit.BeforeClass;
+import org.openqa.selenium.chrome.ChromeOptions;
 import pagers.Auth;
 import helper.Logger;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -17,7 +18,7 @@ public class UiTest {
 
 
     protected WebDriver driver;
-    final private String OTUSURL = "https://otus.ru";
+    final private String OTUSURL = System.getProperty("base.url","https://otus.ru");
 
 
     @BeforeClass
@@ -28,8 +29,12 @@ public class UiTest {
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--start-fullscreen");
+        driver = new ChromeDriver(chromeOptions);
+
+
+
     }
 
     @After
@@ -53,6 +58,7 @@ public class UiTest {
             profile.profileFilling();
             logger.info("Заполнили профиль");
             helper.openingCleanBrowser(driver);
+            driver.get(OTUSURL);
             auth.auth();
             logger.info("Открыли, чистый браузер и авторизовались в УЗ");
             profile.clickProfile();

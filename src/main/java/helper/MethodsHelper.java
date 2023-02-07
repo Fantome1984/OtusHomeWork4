@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+
 
 public class MethodsHelper {
 
@@ -23,7 +23,7 @@ public class MethodsHelper {
     public void actionsMoveElement(By locator){
         WebElement element = driver.findElement(locator);
         Actions actions = new Actions(driver);
-        actions.moveToElement(element).pause(2000).perform();
+        actions.moveToElement(element).perform();
 
     }
 
@@ -40,7 +40,6 @@ public class MethodsHelper {
 
     public void openingCleanBrowser(WebDriver driver){
       driver.manage().deleteAllCookies();
-      driver.get("https://otus.ru");
     }
 
     public void fieldValidation(WebDriver driver, By locator,String expect){
